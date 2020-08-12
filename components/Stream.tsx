@@ -63,7 +63,7 @@ const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
 
       socketRef.current.on('offer', incomingOffer => {
         console.log('offer')
-        rtcPeerConnection.current = createPeerConnection()
+        rtcPeerConnection.current = createPeerConnection(null)
         rtcPeerConnection.current
           .setRemoteDescription(new RTCSessionDescription(incomingOffer.sdp))
           .then(() => {
