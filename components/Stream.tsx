@@ -19,8 +19,7 @@ const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
 
   const [mediaStream, setMediaStream] = useState(null)
   const onUnload = async () => {
-    console.log(roomID)
-    await socketRef.current.emit('disconnect', roomID)
+    await socketRef.current.emit('disconnect')
   }
   useEffect(() => {
     window.addEventListener('beforeunload', onUnload)
@@ -103,6 +102,12 @@ const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
           new RTCIceCandidate(incomingCandidate)
         )
       })
+
+      socketRef.current.on('user disconnects', () => {
+        remoteUser.current = null
+        rtcPeerConnection.current = null
+        remoteVideo.current.srcObject = null
+      })
     }
     return () => window.removeEventListener('beforeunload', onUnload)
   }, [mediaStream])
@@ -153,7 +158,7 @@ const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
 
     return peerConnection
   }
-
+  console.log(remoteVideo)
   return (
     <video
       autoPlay
