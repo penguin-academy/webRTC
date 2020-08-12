@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 To learn more about webRTC, take a look at the following resources:
 
-[coming soon]
+- [webRTC made Simple](https://webrtc.penguin.academy) - learn about webRTC in web and native apps and for prototyping.
 
 You can check out [the webRTC GitHub repository](https://github.com/penguin-academy/webRTC/) - your feedback and contributions are welcome!
 
