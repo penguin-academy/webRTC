@@ -118,6 +118,11 @@ const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
         {
           urls: 'stun:stun.stunprotocol.org',
         },
+        {
+          urls: 'turn:numb.viagenie.ca',
+          credential: 'muazkh',
+          username: 'webrtc@live.com',
+        },
       ],
     })
 
