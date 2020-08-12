@@ -1,15 +1,21 @@
+import * as React from 'react'
 import * as io from 'socket.io-client'
-
-const SERVER_URL = 'https://penguin-signaling-server.herokuapp.com/'
 
 const { useRef, useEffect, useState } = React
 
-export default function Stream({ roomID, className, style }) {
-  const localStream = useRef()
-  const socketRef = useRef()
-  const remoteUser = useRef()
-  const remoteVideo = useRef()
-  const rtcPeerConnection = useRef()
+type Props = {
+  style?: any
+  className?: string
+  roomID: string
+  server: string
+}
+
+const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
+  const localStream = useRef<any>()
+  const socketRef = useRef<any>()
+  const remoteUser = useRef<any>()
+  const remoteVideo = useRef<HTMLVideoElement>(null)
+  const rtcPeerConnection = useRef<any>()
 
   const [mediaStream, setMediaStream] = useState(null)
   const onUnload = async () => {
@@ -35,7 +41,7 @@ export default function Stream({ roomID, className, style }) {
     } else {
       console.log('connect')
       localStream.current = mediaStream
-      socketRef.current = io.connect(SERVER_URL)
+      socketRef.current = io.connect(server)
 
       socketRef.current.emit('start call', roomID)
 
@@ -151,10 +157,12 @@ export default function Stream({ roomID, className, style }) {
   return (
     <video
       autoPlay
-      volume={0.2}
+      // volume={0.2}
       ref={remoteVideo}
       className={className}
       style={style}
     />
   )
 }
+
+export default Stream

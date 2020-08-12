@@ -1,6 +1,6 @@
 {
-	"main": "dist/index.js",
 	"license": "MIT",
+	"main": "dist/index.js",
 	"devDependencies": {
 		"@types/react": "^16.8"
 	},
@@ -9,10 +9,13 @@
 		"react": "^16.8"
 	},
 	"framer": {
-		"id": "5dac4716-31df-4ea4-a8dc-c2cc16865cdb"
+		"displayName": "webRTC Video Call"
 	},
 	"author": "Björn Schmidtke",
 	"dependencies": {
-		"@framer/framer.default": "^1.76.0"
-	}
+		"@framer/framer.default": "^1.76.0",
+		"socket.io-client": "^2.3.0"
+	},
+	"name": "@framer/yy9rq3bz.webrtc-video-call",
+	"version": "1.0.0"
 }
