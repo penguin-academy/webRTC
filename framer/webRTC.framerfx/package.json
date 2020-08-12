@@ -9,7 +9,8 @@
 		"react": "^16.8"
 	},
 	"framer": {
-		"displayName": "webRTC Video Call"
+		"displayName": "webRTC Video Call",
+		"id": "accfde0a-d3ef-4d50-9b39-ec65811f5a05"
 	},
 	"author": "Penguin Academy",
 	"dependencies": {
