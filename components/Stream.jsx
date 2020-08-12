@@ -1,5 +1,7 @@
 import * as io from 'socket.io-client'
 
+const SERVER_URL = 'https://penguin-signaling-server.herokuapp.com/'
+
 const { useRef, useEffect, useState } = React
 
 export default function Stream({ roomID, className, style }) {
@@ -33,9 +35,7 @@ export default function Stream({ roomID, className, style }) {
     } else {
       console.log('connect')
       localStream.current = mediaStream
-      socketRef.current = io.connect(
-        'https://hmxrc-mwpxmcbb-9ugtqt4ndwm6bnf.herokuapp.com/'
-      )
+      socketRef.current = io.connect(SERVER_URL)
 
       socketRef.current.emit('start call', roomID)
 

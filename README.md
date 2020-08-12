@@ -4,7 +4,15 @@ This is the website and client application for webRTC. We created a webRTC solut
 
 ## Getting Started
 
-First, run the development server:
+Make sure to have node v12 or later install the dependencies:
+
+```bash
+npm install
+# or
+yarn
+```
+
+Now, run the development server:
 
 ```bash
 npm run dev

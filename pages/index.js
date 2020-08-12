@@ -122,8 +122,23 @@ export default function Home() {
                           Browsers
                         </h4>
                         <p className='mt-2 text-base leading-6 text-gray-500'>
-                          This tutorials walks you through every step to setup
-                          WebRTC in the browser. [coming soon]
+                          <a
+                            href="javascript:alert('coming soon');"
+                            className='text-blue-600 underline'
+                          >
+                            This tutorials
+                          </a>{' '}
+                          walks you through every step to setup WebRTC in the
+                          browser.
+                          <br />
+                          <a
+                            href='http://github.com/penguin-academy/webrtc'
+                            className='text-blue-600 underline'
+                          >
+                            This GitHub repository
+                          </a>
+                          &nbsp;contains the sources for above demo - video
+                          calling in the browser.
                         </p>
                       </div>
                     </div>
@@ -148,8 +163,14 @@ export default function Home() {
                           Native Apps (Flutter)
                         </h4>
                         <p className='mt-2 text-base leading-6 text-gray-500'>
-                          This tutorial will show you, how to make WebRTC work
-                          within a flutter app. [coming soon]
+                          <a
+                            href="javascript:alert('coming soon');"
+                            className='text-blue-600 underline'
+                          >
+                            This tutorial
+                          </a>{' '}
+                          will show you, how to make WebRTC work within a
+                          flutter app.
                         </p>
                       </div>
                     </div>
@@ -201,8 +222,21 @@ export default function Home() {
                         </h4>
                         <p className='mt-2 text-base leading-6 text-gray-500'>
                           All parts require a signaling server to work. You can
-                          either write your own by following this tutorial
-                          [coming soon] or download the server here.
+                          either write your own by following{' '}
+                          <a
+                            href="javascript:alert('coming soon');"
+                            className='text-blue-600 underline'
+                          >
+                            this tutorial
+                          </a>{' '}
+                          or download{' '}
+                          <a
+                            href='https://github.com/penguin-academy/webRTC-signaling-server'
+                            className='text-blue-600 underline'
+                          >
+                            the server here
+                          </a>
+                          .
                         </p>
                       </div>
                     </div>
