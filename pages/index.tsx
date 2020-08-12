@@ -1,3 +1,5 @@
+import * as React from 'react'
+
 import Head from 'next/head'
 import Footer from '../components/Footer'
 
@@ -51,8 +53,10 @@ export default function Home() {
                 </div>
               </div>
               {error ? (
-                <div class='mt-4'>
-                  <p class='leading-5 text-red-500'>Please enter a room ID!</p>
+                <div className='mt-4'>
+                  <p className='leading-5 text-red-500'>
+                    Please enter a room ID!
+                  </p>
                 </div>
               ) : (
                 ''
