@@ -1,0 +1,18 @@
+{
+	"main": "dist/index.js",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/react": "^16.8"
+	},
+	"peerDependencies": {
+		"framer": "^1.0",
+		"react": "^16.8"
+	},
+	"framer": {
+		"id": "5dac4716-31df-4ea4-a8dc-c2cc16865cdb"
+	},
+	"author": "Björn Schmidtke",
+	"dependencies": {
+		"@framer/framer.default": "^1.76.0"
+	}
+}
