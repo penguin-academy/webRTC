@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Camera from '../components/Camera'
 import Stream from '../components/Stream'
 
-const SERVER_URL = 'http://localhost:8000/'
+const SERVER_URL = 'http://penguin-signaling-server.herokuapp.com/'
 
 const { useEffect, useState } = React
 const Call = () => {
