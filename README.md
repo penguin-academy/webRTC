@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# webRTC Website and Clients
+
+This is the website and client application for webRTC. We created a webRTC solution for you, completely open-source, easy to use and handy tutorials so you can learn how to get started.
 
 ## Getting Started
 
@@ -12,19 +14,16 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about webRTC, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[coming soon]
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+You can check out [the webRTC GitHub repository](https://github.com/penguin-academy/webRTC/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy on netlify
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy this application is is to use [netlify](https://netlify.com). You can simply deploy this static assets using this one click deploy:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/penguin-academy/webRTC)
