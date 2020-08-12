@@ -35,3 +35,7 @@ You can check out [the webRTC GitHub repository](https://github.com/penguin-acad
 The easiest way to deploy this application is is to use [netlify](https://netlify.com). You can simply deploy this static assets using this one click deploy:
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/penguin-academy/webRTC)
+
+## Framer Component
+
+This repository also contains the sources of the matching [Framer Package](https://packages.framer.com/package/yy9rq3bz/webrtc-video-call).
