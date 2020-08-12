@@ -20,4 +20,4 @@ jobs:
         env:
           FRAMER_TOKEN: ${{ secrets.FRAMER_TOKEN }}
         with:
-          args: publish framer/webRTC.framerfx --yes
+          args: publish framer/webRTC.framerfx --yes --public
