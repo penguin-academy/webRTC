@@ -8,7 +8,7 @@ type Props = {
   className?: string
 }
 
-const CAPTURE_OPTIONS = { audio: false, video: true }
+const CAPTURE_OPTIONS = { audio: false, video: true, echoCancellation: true }
 
 const Camera: React.FC<Props> = ({ style, poster, className }) => {
   const videoRef = useRef(null)
