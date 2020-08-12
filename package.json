@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@tailwindcss/ui": "^0.5.0",
-    "framer": "^1.2.5",
     "next": "9.5.2",
     "postcss-flexbugs-fixes": "^4.2.1",
     "postcss-preset-env": "^6.7.0",
