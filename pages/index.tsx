@@ -12,26 +12,26 @@ export default function Home() {
         <title>WebRTC - Penguin Academy</title>
       </Head>
 
-      <div className='relative bg-gray-50 overflow-hidden'>
+      <div className='relative overflow-hidden bg-gray-50'>
         <div className='relative pt-6 pb-12 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32'>
-          <main className='mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28'>
+          <main className='max-w-screen-xl px-4 mx-auto mt-10 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28'>
             <div className='text-center'>
-              <h2 className='text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl'>
+              <h2 className='text-4xl font-extrabold leading-10 tracking-tight text-gray-900 sm:text-5xl sm:leading-none md:text-6xl'>
                 WebRTC&nbsp;
                 <br className='xl:hidden' />
                 <span className='text-indigo-600'>made simple</span>
               </h2>
-              <p className='mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl'>
+              <p className='max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl'>
                 We created a webRTC solution for you, completely open-source,
                 easy to use and handy tutorials so you can learn how to get
                 started.
               </p>
-              <div className='mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8'>
+              <div className='max-w-md mx-auto mt-5 sm:flex sm:justify-center md:mt-8'>
                 <input
                   aria-label='Room id'
                   type='email'
                   required
-                  className='appearance-none px-5 py-3 text-base leading-6 rounded-md shadow text-gray-900 bg-white placeholder-gray-500 focus:outline-none focus:shadow-outline focus:border-blue-300 transition duration-150 ease-in-out'
+                  className='px-5 py-3 text-base leading-6 text-gray-900 placeholder-gray-500 transition duration-150 ease-in-out bg-white rounded-md shadow appearance-none focus:outline-none focus:shadow-outline focus:border-blue-300'
                   placeholder='Enter room id e.g. xLw12'
                   onChange={e => {
                     setError(false)
@@ -44,7 +44,7 @@ export default function Home() {
                       if (!roomID) return setError(true)
                       window.location.href = `/call?room=${roomID}`
                     }}
-                    className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10'
+                    className='flex items-center justify-center w-full px-8 py-3 text-base font-medium leading-6 text-indigo-600 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-indigo-500 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo md:py-4 md:text-lg md:px-10'
                   >
                     Live demo
                   </button>
@@ -59,10 +59,10 @@ export default function Home() {
               )}
             </div>
 
-            <div className='bg-gray-50 overflow-hidden mt-40'>
-              <div className='relative max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:px-8'>
+            <div className='mt-40 overflow-hidden bg-gray-50'>
+              <div className='relative max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8'>
                 <svg
-                  className='absolute top-0 left-full transform -translate-x-1/2 -translate-y-3/4 lg:left-auto lg:right-full lg:translate-x-2/3 lg:translate-y-1/4'
+                  className='absolute top-0 transform -translate-x-1/2 left-full -translate-y-3/4 lg:left-auto lg:right-full lg:translate-x-2/3 lg:translate-y-1/4'
                   width={404}
                   height={784}
                   fill='none'
@@ -95,16 +95,16 @@ export default function Home() {
                 </svg>
                 <div className='relative lg:grid lg:grid-cols-3 lg:col-gap-8'>
                   <div className='lg:col-span-1'>
-                    <h3 className='text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10'>
+                    <h3 className='text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10'>
                       Secure, P2P, dezentralized communication for the 21st
                       century.
                     </h3>
                   </div>
                   <div className='mt-10 sm:grid sm:grid-cols-2 sm:col-gap-8 sm:row-gap-10 lg:col-span-2 lg:mt-0'>
                     <div>
-                      <div className='flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white'>
+                      <div className='flex items-center justify-center w-12 h-12 text-white bg-indigo-500 rounded-md'>
                         <svg
-                          className='h-6 w-6'
+                          className='w-6 h-6'
                           fill='none'
                           viewBox='0 0 24 24'
                           stroke='currentColor'
@@ -118,7 +118,7 @@ export default function Home() {
                         </svg>
                       </div>
                       <div className='mt-5'>
-                        <h4 className='text-lg leading-6 font-medium text-gray-900'>
+                        <h4 className='text-lg font-medium leading-6 text-gray-900'>
                           Browsers
                         </h4>
                         <p className='mt-2 text-base leading-6 text-gray-500'>
@@ -143,9 +143,9 @@ export default function Home() {
                       </div>
                     </div>
                     <div className='mt-10 sm:mt-0'>
-                      <div className='flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white'>
+                      <div className='flex items-center justify-center w-12 h-12 text-white bg-indigo-500 rounded-md'>
                         <svg
-                          className='h-6 w-6'
+                          className='w-6 h-6'
                           fill='none'
                           viewBox='0 0 24 24'
                           stroke='currentColor'
@@ -159,7 +159,7 @@ export default function Home() {
                         </svg>
                       </div>
                       <div className='mt-5'>
-                        <h4 className='text-lg leading-6 font-medium text-gray-900'>
+                        <h4 className='text-lg font-medium leading-6 text-gray-900'>
                           Native Apps (Flutter)
                         </h4>
                         <p className='mt-2 text-base leading-6 text-gray-500'>
@@ -175,9 +175,9 @@ export default function Home() {
                       </div>
                     </div>
                     <div className='mt-10 sm:mt-0'>
-                      <div className='flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white'>
+                      <div className='flex items-center justify-center w-12 h-12 text-white bg-indigo-500 rounded-md'>
                         <svg
-                          className='h-6 w-6'
+                          className='w-6 h-6'
                           fill='none'
                           viewBox='0 0 24 24'
                           stroke='currentColor'
@@ -191,19 +191,25 @@ export default function Home() {
                         </svg>
                       </div>
                       <div className='mt-5'>
-                        <h4 className='text-lg leading-6 font-medium text-gray-900'>
+                        <h4 className='text-lg font-medium leading-6 text-gray-900'>
                           Framer (Prototyping)
                         </h4>
                         <p className='mt-2 text-base leading-6 text-gray-500'>
-                          Install this plugin in framer to make real calls
-                          within your prototype!
+                          Install{' '}
+                          <a
+                            href='https://packages.framer.com/package/yy9rq3bz/webrtc-video-call'
+                            className='text-blue-600 underline'
+                          >
+                            this plugin in Framer
+                          </a>{' '}
+                          to make real calls within your prototype!
                         </p>
                       </div>
                     </div>
                     <div className='mt-10 sm:mt-0'>
-                      <div className='flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white'>
+                      <div className='flex items-center justify-center w-12 h-12 text-white bg-indigo-500 rounded-md'>
                         <svg
-                          className='h-6 w-6'
+                          className='w-6 h-6'
                           fill='none'
                           viewBox='0 0 24 24'
                           stroke='currentColor'
@@ -217,7 +223,7 @@ export default function Home() {
                         </svg>
                       </div>
                       <div className='mt-5'>
-                        <h4 className='text-lg leading-6 font-medium text-gray-900'>
+                        <h4 className='text-lg font-medium leading-6 text-gray-900'>
                           Signaling Server
                         </h4>
                         <p className='mt-2 text-base leading-6 text-gray-500'>

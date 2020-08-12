@@ -1,0 +1,23 @@
+on:
+  push:
+    branches: master
+name: Build and publish Framer Plugin
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Build
+        uses: framer/bridge@master
+        env:
+          FRAMER_TOKEN: ${{ secrets.FRAMER_TOKEN }}
+        with:
+          args: build framer/webRTC.framerfx
+
+      - name: Publish
+        uses: framer/bridge@master
+        env:
+          FRAMER_TOKEN: ${{ secrets.FRAMER_TOKEN }}
+        with:
+          args: publish framer/webRTC.framerfx --yes
