@@ -11,25 +11,39 @@ type Props = {
 }
 
 const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
-  const localStream = useRef<any>()
+  const localMedia = useRef<any>()
   const socketRef = useRef<any>()
   const remoteUser = useRef<any>()
   const remoteVideo = useRef<HTMLVideoElement>(null)
   const rtcPeerConnection = useRef<any>()
 
   const [mediaStream, setMediaStream] = useState(null)
+
   const onUnload = async () => {
     await socketRef.current.emit('disconnect')
   }
   useEffect(() => {
-    window.addEventListener('beforeunload', onUnload)
+    var iOS = ['iPad', 'iPhone', 'iPod'].indexOf(navigator.platform) >= 0
+    var eventName = iOS ? 'pagehide' : 'beforeunload'
+
+    window.addEventListener(eventName, onUnload)
     async function enableStream() {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          audio: true,
-          video: true,
-        })
-        setMediaStream(stream)
+        const handleSuccess = stream => {
+          setMediaStream(stream.clone())
+          // Do stuff with all the streams...
+        }
+        const handleError = error => {
+          console.error('getUserMedia() error: ', error)
+        }
+
+        navigator.mediaDevices
+          .getUserMedia({
+            audio: true,
+            video: { width: 1280, height: 640 },
+          })
+          .then(handleSuccess)
+          .catch(handleError)
       } catch (err) {
         console.log(err)
       }
@@ -39,7 +53,8 @@ const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
       enableStream()
     } else {
       console.log('connect')
-      localStream.current = mediaStream
+      localMedia.current = mediaStream
+
       socketRef.current = io.connect(server)
 
       socketRef.current.emit('start call', roomID)
@@ -47,11 +62,12 @@ const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
       socketRef.current.on('call partner', partnerID => {
         console.log('call partner')
         rtcPeerConnection.current = createPeerConnection(partnerID)
-        localStream.current
+        localMedia.current
           .getTracks()
           .forEach(track =>
-            rtcPeerConnection.current.addTrack(track, localStream.current)
+            rtcPeerConnection.current.addTrack(track, localMedia.current)
           )
+
         remoteUser.current = partnerID
       })
 
@@ -66,10 +82,10 @@ const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
         rtcPeerConnection.current
           .setRemoteDescription(new RTCSessionDescription(incomingOffer.sdp))
           .then(() => {
-            localStream.current
+            localMedia.current
               .getTracks()
               .forEach(track =>
-                rtcPeerConnection.current.addTrack(track, localStream.current)
+                rtcPeerConnection.current.addTrack(track, localMedia.current)
               )
           })
           .then(() => {
@@ -109,7 +125,7 @@ const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
         remoteVideo.current.srcObject = null
       })
     }
-    return () => window.removeEventListener('beforeunload', onUnload)
+    return () => window.removeEventListener(eventName, onUnload)
   }, [mediaStream])
 
   function createPeerConnection(userID) {
@@ -117,6 +133,9 @@ const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
       iceServers: [
         {
           urls: 'stun:stun.stunprotocol.org',
+        },
+        {
+          urls: 'stun:stun.l.google.com:19302',
         },
         {
           urls: 'turn:numb.viagenie.ca',
@@ -163,11 +182,11 @@ const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
 
     return peerConnection
   }
-  console.log(remoteVideo)
+
   return (
     <video
+      playsInline
       autoPlay
-      // volume={0.2}
       ref={remoteVideo}
       className={className}
       style={style}
