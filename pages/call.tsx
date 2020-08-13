@@ -7,8 +7,14 @@ import Stream from '../components/Stream'
 const SERVER_URL = 'https://penguin-signaling-server.herokuapp.com/'
 
 const { useEffect, useState } = React
+const CAPTURE_OPTIONS = {
+  audio: true,
+  video: { width: 1280, height: 640 },
+}
+
 const Call = () => {
   const [roomID, setRoomID] = useState('')
+  const mediaStream = useUserMedia(CAPTURE_OPTIONS)
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
@@ -34,14 +40,46 @@ const Call = () => {
       </div>
       <div className='m-10 md:flex md:items-end'>
         <div className='md:w-8/12'>
-          <Stream roomID={roomID} className='rounded-lg' server={SERVER_URL} />
+          <Stream
+            roomID={roomID}
+            className='rounded-lg'
+            mediaStream={mediaStream}
+            server={SERVER_URL}
+          />
         </div>
         <div className='max-w-xs mt-8 md:ml-8 md:w-3/12 md:mt-0 md:max-w-none'>
-          <Camera className='rounded-lg' />
+          <Camera className='rounded-lg' mediaStream={mediaStream} />
         </div>
       </div>
     </>
   )
+}
+
+function useUserMedia(requestedMedia) {
+  const [mediaStream, setMediaStream] = useState(null)
+
+  useEffect(() => {
+    async function enableStream() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia(requestedMedia)
+        setMediaStream(stream)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    if (!mediaStream) {
+      enableStream()
+    } else {
+      return function cleanup() {
+        mediaStream.getTracks().forEach(track => {
+          track.stop()
+        })
+      }
+    }
+  }, [mediaStream, requestedMedia])
+
+  return mediaStream
 }
 
 export default Call

@@ -1,18 +1,16 @@
 import * as React from 'react'
 
-const { useRef, useEffect, useState } = React
+const { useRef } = React
 
 type Props = {
   style?: any
   poster?: any
   className?: string
+  mediaStream: any
 }
 
-const CAPTURE_OPTIONS = { audio: false, video: true, echoCancellation: true }
-
-const Camera: React.FC<Props> = ({ style, poster, className }) => {
+const Camera: React.FC<Props> = ({ style, poster, className, mediaStream }) => {
   const videoRef = useRef(null)
-  const mediaStream = useUserMedia(CAPTURE_OPTIONS)
 
   if (mediaStream && videoRef.current && !videoRef.current.srcObject) {
     videoRef.current.srcObject = mediaStream
@@ -37,30 +35,3 @@ const Camera: React.FC<Props> = ({ style, poster, className }) => {
 }
 
 export default Camera
-
-function useUserMedia(requestedMedia) {
-  const [mediaStream, setMediaStream] = useState(null)
-
-  useEffect(() => {
-    async function enableStream() {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia(requestedMedia)
-        setMediaStream(stream)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-
-    if (!mediaStream) {
-      enableStream()
-    } else {
-      return function cleanup() {
-        mediaStream.getTracks().forEach(track => {
-          track.stop()
-        })
-      }
-    }
-  }, [mediaStream, requestedMedia])
-
-  return mediaStream
-}

@@ -1,23 +1,28 @@
 import * as React from 'react'
 import * as io from 'socket.io-client'
 
-const { useRef, useEffect, useState } = React
+const { useRef, useEffect } = React
 
 type Props = {
   style?: any
   className?: string
   roomID: string
   server: string
+  mediaStream: any
 }
 
-const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
+const Stream: React.FC<Props> = ({
+  roomID,
+  className,
+  style,
+  server,
+  mediaStream,
+}) => {
   const localMedia = useRef<any>()
   const socketRef = useRef<any>()
   const remoteUser = useRef<any>()
   const remoteVideo = useRef<HTMLVideoElement>(null)
   const rtcPeerConnection = useRef<any>()
-
-  const [mediaStream, setMediaStream] = useState(null)
 
   const onUnload = async () => {
     await socketRef.current.emit('disconnect')
@@ -27,31 +32,8 @@ const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
     var eventName = iOS ? 'pagehide' : 'beforeunload'
 
     window.addEventListener(eventName, onUnload)
-    async function enableStream() {
-      try {
-        const handleSuccess = stream => {
-          setMediaStream(stream.clone())
-          // Do stuff with all the streams...
-        }
-        const handleError = error => {
-          console.error('getUserMedia() error: ', error)
-        }
 
-        navigator.mediaDevices
-          .getUserMedia({
-            audio: true,
-            video: { width: 1280, height: 640 },
-          })
-          .then(handleSuccess)
-          .catch(handleError)
-      } catch (err) {
-        console.log(err)
-      }
-    }
-
-    if (!mediaStream) {
-      enableStream()
-    } else {
+    if (mediaStream) {
       console.log('connect')
       localMedia.current = mediaStream
 
@@ -125,6 +107,7 @@ const Stream: React.FC<Props> = ({ roomID, className, style, server }) => {
         remoteVideo.current.srcObject = null
       })
     }
+
     return () => window.removeEventListener(eventName, onUnload)
   }, [mediaStream])
 
