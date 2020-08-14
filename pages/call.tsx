@@ -48,7 +48,11 @@ const Call = () => {
           />
         </div>
         <div className='max-w-xs mt-8 md:ml-8 md:w-3/12 md:mt-0 md:max-w-none'>
-          <Camera className='rounded-lg' mediaStream={mediaStream} />
+          <Camera
+            className='rounded-lg'
+            mediaStream={mediaStream}
+            style={{ transform: 'rotateY(180deg)' }}
+          />
         </div>
       </div>
     </>
