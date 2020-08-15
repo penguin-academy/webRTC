@@ -7,7 +7,7 @@ import StreamComponent from '../../../components/Stream.tsx'
 const { useRef, useEffect, useState } = React
 
 const CAPTURE_OPTIONS = {
-  audio: false,
+  audio: true,
   video: { width: 1280, height: 640 },
 }
 
