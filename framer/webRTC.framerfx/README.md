@@ -1,8 +1,14 @@
 # Overview
 
+_This is an early preview of the package. Be aware that things might change._
+
 This package contains a set of connective components that work with the cameras on your device. Using the default config settings you can quickly setup a real time video call from your prototype.
 
 This component works out-of-the-box.
+
+After dragging the component into your project, you can copy the roomID from the settings and open [webrtc.penguin.academy](https://webrtc.penguin.academy). Ender the roomID there and start your prototype. This should establish a connection between both (you might want to open the link from another device) 🚀🤙.
+
+## Configuration
 
 This project is part of a free and open source project "[webRTC made Simple](https://webrtc.penguin.academy)".
 
@@ -15,9 +21,7 @@ This project is part of a free and open source project "[webRTC made Simple](htt
 | Server | string | https://penguin-signaling-server.herokuapp.com/ | URL to the video server. You can use our freely available server without guarantee or change it to your own server. |
 | RoomID | string | randomly generated number | This ID is used to match the two participants of the call. You can create another prototype that uses the same ID and both participants will be connected or you can send them a link to our web app: https://webrtc.penguin.academy/call?room=\<id\>, replace \<id\> with the value in this field. |
 
-## Warnings and Compatibility
-
-_This is an early preview of the package. Be aware that things might change._
+## Browser Compatibility
 
 This package will never show video while opened in Framer Desktop.
 
