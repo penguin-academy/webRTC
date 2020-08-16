@@ -44,3 +44,64 @@ export function showStream(props): Override {
   }
 }
 ```
+
+Additionally you can also cancel the
+
+## API
+
+You can pass functions to the "Stream" component to receive access to the stream objects.
+
+The local video stream:
+
+```
+onStream: stream => {}
+```
+
+The remote video stream:
+
+```
+onRemoteStream: remoteStream => {}
+```
+
+### Examples
+
+You can see example usage in the code above.
+
+Here is another example - this one creates a secon Override `stopStream` that you can apply to the button that ends the call.
+
+```
+import * as React from "react"
+import { Override, Data } from "framer"
+
+const appState = Data({
+    stream: null,
+    remoteStream: null,
+})
+
+export function Stream(props): Override {
+    return {
+        onStream: (stream) => {
+            appState.stream = stream
+        },
+        onRemoteStream: (stream) => {
+            appState.remoteStream = stream
+        },
+    }
+}
+
+export function stopStream(props): Override {
+    return {
+        onTap: () => {
+            if (appState.stream)
+                (appState.stream as any)
+                    .getTracks()
+                    .forEach((track) => track.stop())
+            if (appState.stream)
+                (appState.remoteStream as any)
+                    .getTracks()
+                    .forEach((track) => track.stop())
+        },
+    }
+}
+
+```

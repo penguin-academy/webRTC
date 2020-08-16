@@ -35,12 +35,14 @@ export function Stream(props) {
       style={{ ...style, objectFit: props.cover ? 'cover' : 'contain' }}
       server={props.server}
       mediaStream={mediaStream}
+      onRemoteStream={props.onRemoteStream}
     />
   )
 }
 
 Stream.defaultProps = {
   onStream: () => null,
+  onRemoteStream: () => null,
 }
 
 addPropertyControls(Stream, {
@@ -84,25 +86,41 @@ function useUserMedia(requestedMedia) {
   const [mediaStream, setMediaStream] = useState(null)
 
   useEffect(() => {
+    let canceled = false
+
     async function enableStream() {
       try {
         const stream = await navigator.mediaDevices.getUserMedia(requestedMedia)
-        setMediaStream(stream)
+
+        if (!canceled) {
+          setMediaStream(stream)
+        } else {
+          stopMediaStream(stream)
+        }
       } catch (err) {
         console.log(err)
       }
     }
 
-    if (!mediaStream) {
-      enableStream()
-    } else {
-      return function cleanup() {
-        mediaStream.getTracks().forEach(track => {
-          track.stop()
-        })
-      }
+    enableStream()
+
+    return () => {
+      canceled = true
     }
-  }, [mediaStream, requestedMedia])
+  }, [requestedMedia])
+
+  useEffect(() => () => stopMediaStream(mediaStream), [mediaStream])
+
+  function stopMediaStream(mediaStream) {
+    if (!mediaStream) {
+      return
+    }
+
+    mediaStream.getTracks().forEach(track => {
+      track.stop()
+      mediaStream.removeTrack(track)
+    })
+  }
 
   return mediaStream
 }
