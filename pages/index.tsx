@@ -167,14 +167,23 @@ export default function Home() {
                           Native Apps (Flutter)
                         </h4>
                         <p className='mt-2 text-base leading-6 text-gray-500'>
-                          <a
+                          {/* <a
                             href="javascript:alert('coming soon');"
                             className='text-blue-600 underline'
                           >
                             This tutorial
                           </a>{' '}
                           will show you, how to make WebRTC work within a
-                          flutter app.
+                          flutter app. */}
+                          You can download an android apk that works with the
+                          web app from{' '}
+                          <a
+                            href='/app-arm64-v8a-release.apk'
+                            className='text-blue-600 underline'
+                            download
+                          >
+                            here
+                          </a>
                         </p>
                       </div>
                     </div>
