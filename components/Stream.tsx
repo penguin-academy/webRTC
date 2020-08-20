@@ -9,6 +9,7 @@ type Props = {
   roomID: string
   server: string
   mediaStream: any
+  onRemoteStream?: (any) => null
 }
 
 const Stream: React.FC<Props> = ({
@@ -17,6 +18,7 @@ const Stream: React.FC<Props> = ({
   style,
   server,
   mediaStream,
+  onRemoteStream,
 }) => {
   const localMedia = useRef<any>()
   const socketRef = useRef<any>()
@@ -27,6 +29,7 @@ const Stream: React.FC<Props> = ({
   const onUnload = async () => {
     await socketRef.current.emit('disconnect')
   }
+
   useEffect(() => {
     var iOS = ['iPad', 'iPhone', 'iPod'].indexOf(navigator.platform) >= 0
     var eventName = iOS ? 'pagehide' : 'beforeunload'
@@ -160,6 +163,7 @@ const Stream: React.FC<Props> = ({
     peerConnection.ontrack = e => {
       if (mediaStream && remoteVideo.current) {
         remoteVideo.current.srcObject = e.streams[0]
+        if (onRemoteStream) onRemoteStream(e.streams[0])
       }
     }
 
